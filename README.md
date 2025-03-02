@@ -28,8 +28,6 @@
 26. [Swap Space Management](#swap-space-management)
 27. [Secure Disk Erasing](#secure-disk-erasing)
 
----
-
 ## File Management Commands
 
 ### `ls`
