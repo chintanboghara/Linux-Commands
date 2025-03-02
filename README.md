@@ -1,5 +1,3 @@
-# Linux Commands Documentation
-
 ## Table of Contents
 
 1. [File Management Commands](#file-management-commands)
