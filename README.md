@@ -231,8 +231,6 @@
   unzip archive.zip
   ```
 
----
-
 ## Process Management Commands
 
 ### `ps`
@@ -282,8 +280,6 @@
   ```bash
   nohup python script.py &
   ```
-
----
 
 ## System Information Commands
 
@@ -383,8 +379,6 @@
   ```bash
   cal -y
   ```
-
----
 
 ## Networking Commands
 
@@ -516,8 +510,6 @@
   ssh-keygen -t rsa -b 4096
   ```
 
----
-
 ## IO Redirection
 
 ### `cmd < file`
@@ -568,8 +560,6 @@
   ls | tee output.txt
   ```
 
----
-
 ## Environment Variable Commands
 
 ### `export VARIABLE_NAME=value`
@@ -603,8 +593,6 @@
   ```bash
   unset MY_VAR
   ```
-
----
 
 ## User Management Commands
 
@@ -680,8 +668,6 @@
   sudo usermod -a -G developers newuser
   ```
 
----
-
 ## Shell Commands
 
 ### `alias`
@@ -708,8 +694,6 @@
   history
   ```
 
----
-
 ## Scheduling Commands
 
 ### `crontab`
@@ -720,8 +704,6 @@
   crontab -e
   ```
   Add: `0 1 * * * backup.sh` to run daily at 1 AM.
-
----
 
 ## Text Processing Commands
 
@@ -781,8 +763,6 @@
   wc -l script.sh
   ```
 
----
-
 ## General Commands
 
 ### `man`
@@ -808,8 +788,6 @@
   ```bash
   sudo apt update
   ```
-
----
 
 ## System Control Commands
 
@@ -837,8 +815,6 @@
   sudo halt
   ```
 
----
-
 ## Bash Shortcuts
 
 - **Ctrl + A**: Move to the beginning of the line.
@@ -858,8 +834,6 @@
 - **Ctrl + N**: Next command in history.
 - **Ctrl + C**: Terminate the current command.
 
----
-
 ## Nano Shortcuts
 
 - **Ctrl + O**: Save the file (write out).
@@ -877,8 +851,6 @@
 - **Ctrl + W**: Search for a string.
 - **Alt + W**: Search and replace a string.
 - **Alt + R**: Repeat the last search.
-
----
 
 ## VI Shortcuts
 
@@ -903,8 +875,6 @@
 - **a**: Append after the cursor.
 - **C**: Change from cursor to end of line (delete and insert).
 
----
-
 ## Vim Shortcuts
 
 - **i**: Enter insert mode before the cursor.
@@ -924,8 +894,6 @@
 - **d**: Delete the selected text.
 - **p**: Paste the copied or deleted text.
 - **:s/old/new/g**: Replace all occurrences of "old" with "new" in the current line.
-
----
 
 ## Package Management Commands
 
@@ -1025,8 +993,6 @@
   sudo pacman -Syu
   ```
 
----
-
 ## Disk Space Usage & Monitoring
 
 ### `df -h`
@@ -1084,8 +1050,6 @@
   ```bash
   mount | column -t
   ```
-
----
 
 ## Partition & Filesystem Management
 
@@ -1147,8 +1111,6 @@
   sudo tune2fs -m 5 /dev/sdb1
   ```
 
----
-
 ## Mounting & Unmounting Filesystems
 
 ### `mount /dev/sdb1 /mnt`
@@ -1190,8 +1152,6 @@
   ```bash
   sudo mount -o loop disk.iso /mnt
   ```
-
----
 
 ## Disk Performance & Health Monitoring
 
@@ -1235,8 +1195,6 @@
   sudo badblocks -sv /dev/sdb
   ```
 
----
-
 ## Managing Disk Quotas
 
 ### `quota -u username`
@@ -1270,8 +1228,6 @@
   ```bash
   sudo setquota -u user1 500M 1G 0 0 /dev/sda1
   ```
-
----
 
 ## LVM (Logical Volume Management)
 
@@ -1314,8 +1270,6 @@
   ```bash
   sudo resize2fs /dev/my_vg/my_lv
   ```
-
----
 
 ## Swap Space Management
 
@@ -1382,8 +1336,6 @@
   ```bash
   sudo swapon /swapfile
   ```
-
----
 
 ## Secure Disk Erasing
 
