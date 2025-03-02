@@ -154,8 +154,6 @@
   sudo updatedb
   ```
 
----
-
 ## File Permission Commands
 
 ### `chmod`
@@ -189,8 +187,6 @@
   ```bash
   umask 022
   ```
-
----
 
 ## File Compression and Archiving Commands
 
