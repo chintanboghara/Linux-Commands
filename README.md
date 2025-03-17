@@ -1,4 +1,6 @@
-## Table of Contents
+# Linux Commands
+
+### Table of Contents
 
 1. [File Management Commands](#file-management-commands)
 2. [File Permission Commands](#file-permission-commands)
@@ -31,59 +33,58 @@
 ## File Management Commands
 
 ### `ls`
-- **Description**: List files and directories in the current directory.
-- **Detailed Explanation**: Displays the contents of the current directory. Options like `-l` (long format), `-a` (show hidden files), and `-h` (human-readable sizes) enhance its functionality.
+- **Description**: List directory contents.
+- **Explanation**: Shows files and directories. Options: `-l` (long format), `-a` (hidden files), `-h` (human-readable sizes).
 - **Example**:
   ```bash
-  ls -la
+  ls -lah
   ```
-  Lists all files (including hidden ones) in long format.
+  Lists all files with details and readable sizes.
 
 ### `cd`
 - **Description**: Change directory.
-- **Detailed Explanation**: Navigates to a specified directory. Use `cd ..` to move up one level or `cd ~` to return to the home directory.
+- **Explanation**: Navigates directories. Use `cd ..` (parent), `cd ~` (home), `cd -` (previous).
 - **Example**:
   ```bash
   cd /var/www
   ```
 
 ### `pwd`
-- **Description**: Print current working directory.
-- **Detailed Explanation**: Outputs the full path of the current directory.
+- **Description**: Print working directory.
+- **Explanation**: Displays the current directory’s full path.
 - **Example**:
   ```bash
   pwd
   ```
-  Might output `/home/user`.
+  Outputs: `/home/user`.
 
 ### `mkdir`
-- **Description**: Create a new directory.
-- **Detailed Explanation**: Creates directories with specified names. Use `-p` to create parent directories as needed.
+- **Description**: Create directories.
+- **Explanation**: Makes new directories; `-p` creates parents if needed.
 - **Example**:
   ```bash
   mkdir -p project/src
   ```
 
 ### `rm`
-- **Description**: Remove files and directories.
-- **Detailed Explanation**: Deletes files or directories. Use `-r` for recursive deletion (directories) and `-f` to force without prompting.
-- **Warning**: Permanently deletes files; use with caution.
+- **Description**: Remove files or directories.
+- **Explanation**: Deletes permanently. Use `-r` (recursive), `-f` (force). Caution: No undo.
 - **Example**:
   ```bash
   rm -rf temp_folder
   ```
 
 ### `cp`
-- **Description**: Copy files and directories.
-- **Detailed Explanation**: Copies files or directories from source to destination. Use `-r` for directories.
+- **Description**: Copy files or directories.
+- **Explanation**: Copies from source to destination; `-r` for directories.
 - **Example**:
   ```bash
   cp -r docs /backup
   ```
 
 ### `mv`
-- **Description**: Move or rename files and directories.
-- **Detailed Explanation**: Moves files to a new location or renames them if the destination is a new name in the same directory.
+- **Description**: Move or rename files/directories.
+- **Explanation**: Moves or renames; destination determines action.
 - **Example**:
   ```bash
   mv file.txt docs/file.txt
@@ -91,82 +92,98 @@
   ```
 
 ### `touch`
-- **Description**: Create an empty file or update file timestamps.
-- **Detailed Explanation**: Creates a new empty file if it doesn’t exist or updates the timestamp of an existing file.
+- **Description**: Create empty files or update timestamps.
+- **Explanation**: Creates files or refreshes timestamps if they exist.
 - **Example**:
   ```bash
   touch notes.txt
   ```
 
 ### `cat`
-- **Description**: Display the contents of a file.
-- **Detailed Explanation**: Outputs file contents to the terminal. Can concatenate multiple files with `cat file1 file2`.
+- **Description**: Concatenate and display file contents.
+- **Explanation**: Outputs file contents; can combine multiple files.
 - **Example**:
   ```bash
   cat /etc/hosts
   ```
 
 ### `head`
-- **Description**: Display the first few lines of a file.
-- **Detailed Explanation**: Shows the first 10 lines by default. Use `-n` to specify a different number.
+- **Description**: Show the first lines of a file.
+- **Explanation**: Defaults to 10 lines; `-n` sets custom count.
 - **Example**:
   ```bash
-  head -n 3 log.txt
+  head -n 5 log.txt
   ```
 
 ### `tail`
-- **Description**: Display the last few lines of a file.
-- **Detailed Explanation**: Shows the last 10 lines by default. Use `-n` for a custom number or `-f` to follow updates.
+- **Description**: Show the last lines of a file.
+- **Explanation**: Defaults to 10 lines; `-n` for count, `-f` to follow.
 - **Example**:
   ```bash
   tail -f /var/log/syslog
   ```
 
 ### `ln`
-- **Description**: Create links between files.
-- **Detailed Explanation**: Creates hard or symbolic (`-s`) links. Symbolic links point to another file’s path.
+- **Description**: Create hard or symbolic links.
+- **Explanation**: Links files; `-s` for symbolic links.
 - **Example**:
   ```bash
   ln -s /usr/bin/python3 python
   ```
 
 ### `find`
-- **Description**: Search for files and directories.
-- **Detailed Explanation**: Searches based on criteria like name, type, or size. Powerful but slower than `locate`.
+- **Description**: Search for files/directories.
+- **Explanation**: Searches by name, type, size; flexible but slower than `locate`.
 - **Example**:
   ```bash
   find / -name "*.conf"
   ```
 
 ### `locate`
-- **Description**: Find files by name.
-- **Detailed Explanation**: Uses a pre-built database for fast searches. Requires `updatedb` to refresh the database.
+- **Description**: Quickly find files by name.
+- **Explanation**: Uses a database (update with `updatedb`) for speed.
 - **Example**:
   ```bash
   locate passwd
   ```
 
 ### `updatedb`
-- **Description**: Update the file database used by `locate`.
-- **Detailed Explanation**: Refreshes the database for `locate`. Requires root privileges.
+- **Description**: Update the `locate` database.
+- **Explanation**: Refreshes the file index; needs root.
 - **Example**:
   ```bash
   sudo updatedb
+  ```
+
+### `tree`
+- **Description**: Display directory tree.
+- **Explanation**: Shows structure; `-a` (all files), `-d` (dirs only).
+- **Example**:
+  ```bash
+  tree -a /home/user
+  ```
+
+### `file`
+- **Description**: Determine file type.
+- **Explanation**: Identifies file type (e.g., text, binary).
+- **Example**:
+  ```bash
+  file image.png
   ```
 
 ## File Permission Commands
 
 ### `chmod`
 - **Description**: Change file permissions.
-- **Detailed Explanation**: Modifies read (`r`), write (`w`), and execute (`x`) permissions using numeric (e.g., 755) or symbolic (e.g., `u+x`) notation.
+- **Explanation**: Sets read (`r`), write (`w`), execute (`x`) via numeric (e.g., 644) or symbolic (e.g., `u+x`) modes.
 - **Example**:
   ```bash
   chmod 644 file.txt
   ```
 
 ### `chown`
-- **Description**: Change file ownership.
-- **Detailed Explanation**: Assigns a new owner and/or group to files. Use `user:group` syntax.
+- **Description**: Change file owner and group.
+- **Explanation**: Assigns ownership; syntax `user:group`.
 - **Example**:
   ```bash
   sudo chown apache:apache /var/www
@@ -174,25 +191,41 @@
 
 ### `chgrp`
 - **Description**: Change group ownership.
-- **Detailed Explanation**: Changes only the group ownership of a file or directory.
+- **Explanation**: Updates group ownership only.
 - **Example**:
   ```bash
   chgrp developers project
   ```
 
 ### `umask`
-- **Description**: Set default file permissions.
-- **Detailed Explanation**: Defines permissions subtracted from 666 (files) or 777 (directories) for new files. E.g., `022` sets 644 for files.
+- **Description**: Set default permissions for new files.
+- **Explanation**: Subtracts from 666 (files) or 777 (dirs); `022` yields 644.
 - **Example**:
   ```bash
   umask 022
   ```
 
+### `getfacl`
+- **Description**: Get file access control lists (ACLs).
+- **Explanation**: Shows detailed permissions beyond `chmod`.
+- **Example**:
+  ```bash
+  getfacl file.txt
+  ```
+
+### `setfacl`
+- **Description**: Set file ACLs.
+- **Explanation**: Grants specific permissions; `-m` modifies.
+- **Example**:
+  ```bash
+  setfacl -m u:user:rw file.txt
+  ```
+
 ## File Compression and Archiving Commands
 
 ### `tar`
-- **Description**: Create or extract archive files.
-- **Detailed Explanation**: Archives files into a `.tar` file. Use `-c` (create), `-x` (extract), `-z` (gzip), `-f` (file).
+- **Description**: Archive files.
+- **Explanation**: Creates/extracts `.tar` files; `-c` (create), `-x` (extract), `-z` (gzip), `-f` (file).
 - **Example**:
   ```bash
   tar -czvf backup.tar.gz /home/user
@@ -201,123 +234,203 @@
 
 ### `gzip`
 - **Description**: Compress files.
-- **Detailed Explanation**: Compresses a file, replacing it with a `.gz` version.
+- **Explanation**: Creates `.gz` files, replacing originals.
 - **Example**:
   ```bash
   gzip largefile.txt
   ```
 
 ### `gunzip`
-- **Description**: Decompress files compressed with `gzip`.
-- **Detailed Explanation**: Restores the original file from a `.gz` archive.
+- **Description**: Decompress `.gz` files.
+- **Explanation**: Restores original files.
 - **Example**:
   ```bash
   gunzip largefile.txt.gz
   ```
 
 ### `zip`
-- **Description**: Create compressed zip archives.
-- **Detailed Explanation**: Combines and compresses files into a `.zip` file.
+- **Description**: Create `.zip` archives.
+- **Explanation**: Compresses files into `.zip`.
 - **Example**:
   ```bash
   zip archive.zip file1 file2
   ```
 
 ### `unzip`
-- **Description**: Extract files from a zip archive.
-- **Detailed Explanation**: Decompresses and extracts contents of a `.zip` file.
+- **Description**: Extract `.zip` archives.
+- **Explanation**: Decompresses and extracts `.zip` contents.
 - **Example**:
   ```bash
   unzip archive.zip
   ```
 
+### `bzip2`
+- **Description**: Compress with bzip2.
+- **Explanation**: Better compression than `gzip`; creates `.bz2`.
+- **Example**:
+  ```bash
+  bzip2 largefile.txt
+  ```
+
+### `bunzip2`
+- **Description**: Decompress `.bz2` files.
+- **Explanation**: Restores original files from `.bz2`.
+- **Example**:
+  ```bash
+  bunzip2 largefile.txt.bz2
+  ```
+
+### `xz`
+- **Description**: Compress with xz.
+- **Explanation**: High compression ratio; creates `.xz`.
+- **Example**:
+  ```bash
+  xz largefile.txt
+  ```
+
+### `unxz`
+- **Description**: Decompress `.xz` files.
+- **Explanation**: Restores original files from `.xz`.
+- **Example**:
+  ```bash
+  unxz largefile.txt.xz
+  ```
+
 ## Process Management Commands
 
 ### `ps`
-- **Description**: Display running processes.
-- **Detailed Explanation**: Shows process details. Use `-aux` for all processes with user info.
+- **Description**: List running processes.
+- **Explanation**: Shows process details; `-aux` for all with user info.
 - **Example**:
   ```bash
   ps aux | grep nginx
   ```
 
 ### `top`
-- **Description**: Monitor system processes in real-time.
-- **Detailed Explanation**: Displays a dynamic view of CPU, memory, and process usage.
+- **Description**: Monitor processes in real-time.
+- **Explanation**: Displays CPU, memory, and process usage dynamically.
 - **Example**:
   ```bash
   top
   ```
 
 ### `kill`
-- **Description**: Terminate a process.
-- **Detailed Explanation**: Sends a signal (default: TERM) to a process by PID. Use `-9` for forceful termination.
+- **Description**: Terminate a process by PID.
+- **Explanation**: Sends signals; `-9` (SIGKILL) forces termination.
 - **Example**:
   ```bash
   kill -9 12345
   ```
 
 ### `pkill`
-- **Description**: Terminate processes based on their name.
-- **Detailed Explanation**: Kills processes matching a name pattern.
+- **Description**: Kill processes by name.
+- **Explanation**: Targets processes by name pattern.
 - **Example**:
   ```bash
   pkill -u user
   ```
 
 ### `pgrep`
-- **Description**: List processes based on their name.
-- **Detailed Explanation**: Returns PIDs of processes matching a name.
+- **Description**: Find PIDs by name.
+- **Explanation**: Lists PIDs matching a name.
 - **Example**:
   ```bash
   pgrep python
   ```
 
 ### `nohup`
-- **Description**: Run a command immune to hangups.
-- **Detailed Explanation**: Allows a process to continue after logout. Use `&` to run in the background.
+- **Description**: Run commands immune to hangups.
+- **Explanation**: Persists after logout; `&` for background.
 - **Example**:
   ```bash
   nohup python script.py &
   ```
 
+### `htop`
+- **Description**: Interactive process viewer.
+- **Explanation**: Enhanced `top` alternative with a friendly UI.
+- **Example**:
+  ```bash
+  htop
+  ```
+
+### `nice`
+- **Description**: Set process priority.
+- **Explanation**: Adjusts priority (-20 high to 19 low); default 0.
+- **Example**:
+  ```bash
+  nice -n 10 tar -czf backup.tar.gz /home
+  ```
+
+### `renice`
+- **Description**: Change priority of running processes.
+- **Explanation**: Modifies priority by PID.
+- **Example**:
+  ```bash
+  renice 15 -p 12345
+  ```
+
+### `jobs`
+- **Description**: List background jobs.
+- **Explanation**: Shows jobs in the current shell.
+- **Example**:
+  ```bash
+  jobs
+  ```
+
+### `bg`
+- **Description**: Resume job in background.
+- **Explanation**: Continues a suspended job.
+- **Example**:
+  ```bash
+  bg %1
+  ```
+
+### `fg`
+- **Description**: Bring job to foreground.
+- **Explanation**: Resumes a job in the foreground.
+- **Example**:
+  ```bash
+  fg %1
+  ```
+
 ## System Information Commands
 
 ### `uname`
-- **Description**: Print system information.
-- **Detailed Explanation**: Displays kernel and system details. Use `-a` for all info.
+- **Description**: Display system info.
+- **Explanation**: Shows kernel details; `-a` for all.
 - **Example**:
   ```bash
   uname -a
   ```
 
 ### `whoami`
-- **Description**: Display current username.
-- **Detailed Explanation**: Shows the effective username of the current user.
+- **Description**: Show current username.
+- **Explanation**: Displays effective user.
 - **Example**:
   ```bash
   whoami
   ```
 
 ### `free`
-- **Description**: Display memory usage information.
-- **Detailed Explanation**: Shows total, used, and free memory. Use `-h` for human-readable output.
+- **Description**: Show memory usage.
+- **Explanation**: Lists total/used/free memory; `-h` for readable units.
 - **Example**:
   ```bash
   free -h
   ```
 
 ### `uptime`
-- **Description**: Show system uptime.
-- **Detailed Explanation**: Displays how long the system has been running, plus load averages.
+- **Description**: Show system uptime and load.
+- **Explanation**: Displays runtime and load averages.
 - **Example**:
   ```bash
   uptime
   ```
 
 ### `lscpu`
-- **Description**: Display CPU information.
-- **Detailed Explanation**: Lists CPU architecture, cores, and other details.
+- **Description**: Display CPU info.
+- **Explanation**: Shows CPU architecture and cores.
 - **Example**:
   ```bash
   lscpu
@@ -325,7 +438,7 @@
 
 ### `lspci`
 - **Description**: List PCI devices.
-- **Detailed Explanation**: Shows PCI hardware like graphics cards and network adapters.
+- **Explanation**: Shows PCI hardware (e.g., GPUs, NICs).
 - **Example**:
   ```bash
   lspci
@@ -333,39 +446,39 @@
 
 ### `lsusb`
 - **Description**: List USB devices.
-- **Detailed Explanation**: Displays connected USB devices.
+- **Explanation**: Displays connected USB devices.
 - **Example**:
   ```bash
   lsusb
   ```
 
 ### `lsof`
-- **Description**: List open files and processes.
-- **Detailed Explanation**: Shows files opened by processes, useful for troubleshooting.
+- **Description**: List open files.
+- **Explanation**: Shows files/processes; useful for debugging.
 - **Example**:
   ```bash
   lsof -i :80
   ```
 
 ### `lshw`
-- **Description**: Display detailed hardware configuration.
-- **Detailed Explanation**: Provides a comprehensive hardware report. Requires root privileges for full details.
+- **Description**: Show hardware details.
+- **Explanation**: Full hardware report; needs root for all info.
 - **Example**:
   ```bash
   sudo lshw
   ```
 
 ### `sar`
-- **Description**: Collect and report system activity information.
-- **Detailed Explanation**: Part of `sysstat`, monitors CPU, memory, and I/O. Use `-u` for CPU stats.
+- **Description**: Monitor system activity.
+- **Explanation**: Tracks CPU/memory/I/O (`sysstat`); `-u` for CPU.
 - **Example**:
   ```bash
   sar -u 1 5
   ```
 
 ### `date`
-- **Description**: Display or set the system date and time.
-- **Detailed Explanation**: Shows current date/time or sets it with a string (requires root).
+- **Description**: Show/set date and time.
+- **Explanation**: Displays or sets system time (root for set).
 - **Example**:
   ```bash
   date
@@ -373,188 +486,220 @@
   ```
 
 ### `cal`
-- **Description**: Display a calendar.
-- **Detailed Explanation**: Shows a month’s calendar. Use `-y` for the full year.
+- **Description**: Display calendar.
+- **Explanation**: Shows month; `-y` for year.
 - **Example**:
   ```bash
   cal -y
   ```
 
-## Networking Commands
-
-### `ipconfig` *(Windows, not Linux)*
-- **Description**: Display network interface information (Windows).
-- **Detailed Explanation**: Included here for reference, but not a Linux command. Use `ifconfig` or `ip addr` on Linux.
-- **Example** (Windows):
-  ```cmd
-  ipconfig
+### `hostname`
+- **Description**: Show/set hostname.
+- **Explanation**: Displays or changes system hostname.
+- **Example**:
+  ```bash
+  hostname
   ```
 
+### `dmidecode`
+- **Description**: Show BIOS hardware info.
+- **Explanation**: Detailed hardware data; needs root.
+- **Example**:
+  ```bash
+  sudo dmidecode -t memory
+  ```
+
+## Networking Commands
+
 ### `ifconfig`
-- **Description**: Display network interface information (Linux/Unix).
-- **Detailed Explanation**: Shows network interface details. Deprecated; prefer `ip addr`.
+- **Description**: Show network interfaces (deprecated).
+- **Explanation**: Displays network info; use `ip addr` instead.
 - **Example**:
   ```bash
   ifconfig
   ```
 
 ### `ip addr`
-- **Description**: Show IP addresses and network interfaces (modern Linux).
-- **Detailed Explanation**: Part of `iproute2`, displays and manages network configurations.
+- **Description**: Manage IP addresses/interfaces.
+- **Explanation**: Modern `ifconfig` replacement (`iproute2`).
 - **Example**:
   ```bash
   ip addr show
   ```
 
 ### `ping`
-- **Description**: Send ICMP echo requests to a host.
-- **Detailed Explanation**: Tests network connectivity. Use `-c` to limit packet count.
+- **Description**: Test network connectivity.
+- **Explanation**: Sends ICMP packets; `-c` limits count.
 - **Example**:
   ```bash
   ping -c 4 google.com
   ```
 
 ### `netstat`
-- **Description**: Display network connections and statistics.
-- **Detailed Explanation**: Shows connections, ports, and routing. Use `-tuln` for listening ports.
+- **Description**: Show network stats.
+- **Explanation**: Displays connections/ports; `-tuln` for listening.
 - **Example**:
   ```bash
   netstat -tuln
   ```
 
 ### `ss`
-- **Description**: Display network socket information.
-- **Detailed Explanation**: Modern replacement for `netstat`, faster and more detailed.
+- **Description**: Show socket info.
+- **Explanation**: Faster `netstat` alternative.
 - **Example**:
   ```bash
   ss -tuln
   ```
 
 ### `ssh`
-- **Description**: Securely connect to a remote server.
-- **Detailed Explanation**: Uses SSH protocol for secure remote access.
+- **Description**: Secure remote connection.
+- **Explanation**: Connects via SSH protocol.
 - **Example**:
   ```bash
   ssh user@192.168.1.10
   ```
 
 ### `scp`
-- **Description**: Securely copy files between hosts.
-- **Detailed Explanation**: Transfers files over SSH securely.
+- **Description**: Secure file copy.
+- **Explanation**: Transfers files over SSH.
 - **Example**:
   ```bash
   scp file.txt user@remote:/home/user/
   ```
 
 ### `wget`
-- **Description**: Download files from the web.
-- **Detailed Explanation**: Non-interactive tool for downloading files via HTTP/HTTPS/FTP.
+- **Description**: Download files.
+- **Explanation**: Non-interactive; supports HTTP/HTTPS/FTP.
 - **Example**:
   ```bash
   wget https://example.com/file.zip
   ```
 
 ### `curl`
-- **Description**: Transfer data to or from a server.
-- **Detailed Explanation**: Supports multiple protocols; use `-O` to save files, `-X` for custom requests.
+- **Description**: Transfer data with URLs.
+- **Explanation**: Versatile; `-O` saves files.
 - **Example**:
   ```bash
   curl -O https://example.com/file.zip
   ```
 
 ### `rsync`
-- **Description**: Synchronize files and directories between systems.
-- **Detailed Explanation**: Efficiently syncs files, preserving permissions and timestamps.
+- **Description**: Sync files between systems.
+- **Explanation**: Efficient sync with permissions/timestamps.
 - **Example**:
   ```bash
   rsync -avz /src user@remote:/dest
   ```
 
 ### `iftop`
-- **Description**: Display network bandwidth usage.
-- **Detailed Explanation**: Shows real-time bandwidth usage by connection.
+- **Description**: Monitor bandwidth usage.
+- **Explanation**: Real-time connection bandwidth.
 - **Example**:
   ```bash
   sudo iftop
   ```
 
 ### `nc`
-- **Description**: Netcat utility for network connections.
-- **Detailed Explanation**: Versatile tool for TCP/UDP connections, often called the “Swiss Army knife” of networking.
+- **Description**: Network utility (Netcat).
+- **Explanation**: TCP/UDP tool; versatile for debugging.
 - **Example**:
   ```bash
   nc -l 12345
   ```
 
 ### `iptables`
-- **Description**: Administration tool for IPv4 packet filtering and NAT.
-- **Detailed Explanation**: Configures firewall rules. Use `-L` to list rules.
+- **Description**: Configure IPv4 firewall.
+- **Explanation**: Manages rules; `-L` lists them.
 - **Example**:
   ```bash
   sudo iptables -L
   ```
 
 ### `route`
-- **Description**: Display or manipulate the IP routing table.
-- **Detailed Explanation**: Shows or modifies routing. Use `-n` for numeric output.
+- **Description**: Manage routing table.
+- **Explanation**: Shows/modifies routes; `-n` for numeric.
 - **Example**:
   ```bash
   route -n
   ```
 
 ### `ssh-keygen`
-- **Description**: Generate SSH key pairs.
-- **Detailed Explanation**: Creates public/private keys for SSH authentication.
+- **Description**: Generate SSH keys.
+- **Explanation**: Creates key pairs for authentication.
 - **Example**:
   ```bash
   ssh-keygen -t rsa -b 4096
   ```
 
+### `nslookup`
+- **Description**: Query DNS records.
+- **Explanation**: Resolves hostnames to IPs.
+- **Example**:
+  ```bash
+  nslookup google.com
+  ```
+
+### `dig`
+- **Description**: Detailed DNS lookup.
+- **Explanation**: Comprehensive DNS info; better than `nslookup`.
+- **Example**:
+  ```bash
+  dig google.com
+  ```
+
+### `traceroute`
+- **Description**: Trace network path.
+- **Explanation**: Shows route to a host.
+- **Example**:
+  ```bash
+  traceroute google.com
+  ```
+
 ## IO Redirection
 
 ### `cmd < file`
-- **Description**: Input of `cmd` is taken from `file`.
-- **Detailed Explanation**: Redirects file contents as input to a command.
+- **Description**: Use file as input.
+- **Explanation**: Redirects file contents to `cmd`.
 - **Example**:
   ```bash
   wc -l < data.txt
   ```
 
 ### `cmd > file`
-- **Description**: Standard output of `cmd` is redirected to `file`.
-- **Detailed Explanation**: Overwrites `file` with command output.
+- **Description**: Redirect output to file.
+- **Explanation**: Overwrites file with stdout.
 - **Example**:
   ```bash
   ls > dirlist.txt
   ```
 
 ### `cmd 2> file`
-- **Description**: Error output of `cmd` is redirected to `file`.
-- **Detailed Explanation**: Captures stderr separately.
+- **Description**: Redirect errors to file.
+- **Explanation**: Captures stderr.
 - **Example**:
   ```bash
   ls /nonexistent 2> errors.log
   ```
 
 ### `cmd &> file`
-- **Description**: Every output of `cmd` is redirected to `file`.
-- **Detailed Explanation**: Combines stdout and stderr into one file.
+- **Description**: Redirect all output to file.
+- **Explanation**: Combines stdout and stderr.
 - **Example**:
   ```bash
   make &> build.log
   ```
 
 ### `cmd >> file`
-- **Description**: Append the stdout of `cmd` to `file`.
-- **Detailed Explanation**: Adds output to the end of `file` without overwriting.
+- **Description**: Append output to file.
+- **Explanation**: Adds stdout without overwriting.
 - **Example**:
   ```bash
   echo "Log entry" >> logfile.txt
   ```
 
 ### `tee`
-- **Description**: Redirect output to multiple files or processes.
-- **Detailed Explanation**: Writes output to both a file and stdout. Use `-a` to append.
+- **Description**: Split output to file and stdout.
+- **Explanation**: Writes to both; `-a` appends.
 - **Example**:
   ```bash
   ls | tee output.txt
@@ -563,489 +708,569 @@
 ## Environment Variable Commands
 
 ### `export VARIABLE_NAME=value`
-- **Description**: Set an environment variable.
-- **Detailed Explanation**: Makes a variable available to the shell and subprocesses.
+- **Description**: Set environment variable.
+- **Explanation**: Makes variable available to shell/subprocesses.
 - **Example**:
   ```bash
   export MY_VAR="Hello"
   ```
 
 ### `echo $VARIABLE_NAME`
-- **Description**: Display an environment variable’s value.
-- **Detailed Explanation**: Prints the value of a variable.
+- **Description**: Display variable value.
+- **Explanation**: Prints the variable’s content.
 - **Example**:
   ```bash
   echo $PATH
   ```
 
 ### `env`
-- **Description**: List all environment variables.
-- **Detailed Explanation**: Displays the current environment.
+- **Description**: List environment variables.
+- **Explanation**: Shows all current variables.
 - **Example**:
   ```bash
   env
   ```
 
 ### `unset VARIABLE_NAME`
-- **Description**: Remove an environment variable.
-- **Detailed Explanation**: Deletes a variable from the environment.
+- **Description**: Remove variable.
+- **Explanation**: Deletes from environment.
 - **Example**:
   ```bash
   unset MY_VAR
   ```
 
+### `printenv`
+- **Description**: Print variables.
+- **Explanation**: Shows specific or all variables.
+- **Example**:
+  ```bash
+  printenv PATH
+  ```
+
 ## User Management Commands
 
 ### `who`
-- **Description**: Show who is currently logged in.
-- **Detailed Explanation**: Lists active users and their login details.
+- **Description**: List logged-in users.
+- **Explanation**: Shows active users and details.
 - **Example**:
   ```bash
   who
   ```
 
 ### `sudo adduser username`
-- **Description**: Create a new user account.
-- **Detailed Explanation**: Prompts for user details like password and full name.
+- **Description**: Add new user.
+- **Explanation**: Prompts for user info (e.g., password).
 - **Example**:
   ```bash
   sudo adduser newuser
   ```
 
 ### `finger`
-- **Description**: Display information about users.
-- **Detailed Explanation**: Shows user details like login time and home directory (if installed).
+- **Description**: Show user info.
+- **Explanation**: Displays login time, etc. (if installed).
 - **Example**:
   ```bash
   finger newuser
   ```
 
-### `sudo deluser USER GROUPNAME`
-- **Description**: Remove a user from a group.
-- **Detailed Explanation**: Removes a user from a specified group, not the system.
+### `sudo deluser user groupname`
+- **Description**: Remove user from group.
+- **Explanation**: Removes group membership.
 - **Example**:
   ```bash
   sudo deluser newuser sudo
   ```
 
 ### `last`
-- **Description**: Show recent login history.
-- **Detailed Explanation**: Displays past logins from `/var/log/wtmp`.
+- **Description**: Show login history.
+- **Explanation**: Lists past logins from `/var/log/wtmp`.
 - **Example**:
   ```bash
   last
   ```
 
 ### `sudo userdel -r username`
-- **Description**: Delete a user account and files.
-- **Detailed Explanation**: Removes a user and their home directory with `-r`.
+- **Description**: Delete user and files.
+- **Explanation**: Removes user and home dir (`-r`).
 - **Example**:
   ```bash
   sudo userdel -r olduser
   ```
 
 ### `sudo passwd -l username`
-- **Description**: Lock a user account.
-- **Detailed Explanation**: Disables login by locking the password.
+- **Description**: Lock user account.
+- **Explanation**: Disables login by locking password.
 - **Example**:
   ```bash
   sudo passwd -l newuser
   ```
 
 ### `su - username`
-- **Description**: Switch to another user account.
-- **Detailed Explanation**: Starts a shell as another user. Use `-` for their environment.
+- **Description**: Switch user.
+- **Explanation**: Starts shell as user; `-` loads environment.
 - **Example**:
   ```bash
   su - newuser
   ```
 
-### `sudo usermod -a -G GROUPNAME USERNAME`
-- **Description**: Add a user to a group.
-- **Detailed Explanation**: Appends (`-a`) a user to a group (`-G`).
+### `sudo usermod -a -G groupname username`
+- **Description**: Add user to group.
+- **Explanation**: Appends (`-a`) to group (`-G`).
 - **Example**:
   ```bash
   sudo usermod -a -G developers newuser
   ```
 
+### `id`
+- **Description**: Show user/group IDs.
+- **Explanation**: Lists UID, GID, and groups.
+- **Example**:
+  ```bash
+  id newuser
+  ```
+
 ## Shell Commands
 
 ### `alias`
-- **Description**: Create an alias for a command.
-- **Detailed Explanation**: Shortens commands for the current session. Add to `.bashrc` for persistence.
+- **Description**: Create command shortcuts.
+- **Explanation**: Defines aliases; persist in `.bashrc`.
 - **Example**:
   ```bash
   alias ll="ls -l"
   ```
 
 ### `source`
-- **Description**: Execute commands from a file in the current shell.
-- **Detailed Explanation**: Runs a script in the current environment (alias: `.`).
+- **Description**: Run script in current shell.
+- **Explanation**: Executes in current env (alias: `.`).
 - **Example**:
   ```bash
   source ~/.bashrc
   ```
 
 ### `history`
-- **Description**: Display the command history.
-- **Detailed Explanation**: Lists previously executed commands.
+- **Description**: Show command history.
+- **Explanation**: Lists past commands.
 - **Example**:
   ```bash
   history
   ```
 
+### `type`
+- **Description**: Identify command type.
+- **Explanation**: Shows if alias, function, or binary.
+- **Example**:
+  ```bash
+  type ls
+  ```
+
 ## Scheduling Commands
 
 ### `crontab`
-- **Description**: Schedule commands or scripts to run periodically.
-- **Detailed Explanation**: Manages cron jobs. Use `-e` to edit, `-l` to list.
+- **Description**: Schedule recurring tasks.
+- **Explanation**: Manages cron jobs; `-e` edits, `-l` lists.
 - **Example**:
   ```bash
   crontab -e
   ```
-  Add: `0 1 * * * backup.sh` to run daily at 1 AM.
+  Add: `0 1 * * * backup.sh` (1 AM daily).
+
+### `at`
+- **Description**: Schedule one-time task.
+- **Explanation**: Runs command at specified time.
+- **Example**:
+  ```bash
+  echo "backup.sh" | at now + 1 hour
+  ```
 
 ## Text Processing Commands
 
 ### `grep`
-- **Description**: Search for patterns in text.
-- **Detailed Explanation**: Finds lines matching a pattern. Use `-r` for recursive search.
+- **Description**: Search text for patterns.
+- **Explanation**: Finds matching lines; `-r` for recursive.
 - **Example**:
   ```bash
   grep -r "error" /var/log
   ```
 
 ### `awk`
-- **Description**: Text processing tool for data extraction and manipulation.
-- **Detailed Explanation**: Processes text by fields and patterns.
+- **Description**: Process text data.
+- **Explanation**: Extracts/manipulates by fields/patterns.
 - **Example**:
   ```bash
   awk '{print $1}' access.log
   ```
 
 ### `sed`
-- **Description**: Stream editor for text manipulation.
-- **Detailed Explanation**: Edits text streams. Use `s/pattern/replace/` for substitution.
+- **Description**: Edit text streams.
+- **Explanation**: Substitutes with `s/pattern/replace/`.
 - **Example**:
   ```bash
   sed 's/foo/bar/g' file.txt
   ```
 
 ### `diff`
-- **Description**: Compare files line by line.
-- **Detailed Explanation**: Highlights differences between two files.
+- **Description**: Compare files.
+- **Explanation**: Shows line-by-line differences.
 - **Example**:
   ```bash
   diff file1.txt file2.txt
   ```
 
 ### `sort`
-- **Description**: Sort lines of text files.
-- **Detailed Explanation**: Orders lines alphabetically or numerically with `-n`.
+- **Description**: Sort text lines.
+- **Explanation**: Orders alphabetically or numerically (`-n`).
 - **Example**:
   ```bash
   sort -n numbers.txt
   ```
 
 ### `cut`
-- **Description**: Extract sections from lines of files.
-- **Detailed Explanation**: Cuts fields by delimiter (`-d`) and field number (`-f`).
+- **Description**: Extract text sections.
+- **Explanation**: Cuts by delimiter (`-d`) and field (`-f`).
 - **Example**:
   ```bash
   cut -d',' -f2 data.csv
   ```
 
 ### `wc`
-- **Description**: Count lines, words, and characters in a file.
-- **Detailed Explanation**: Use `-l` (lines), `-w` (words), `-c` (characters).
+- **Description**: Count lines/words/chars.
+- **Explanation**: Uses `-l` (lines), `-w` (words), `-c` (chars).
 - **Example**:
   ```bash
   wc -l script.sh
   ```
 
+### `uniq`
+- **Description**: Remove duplicate lines.
+- **Explanation**: Filters adjacent duplicates; pair with `sort`.
+- **Example**:
+  ```bash
+  sort file.txt | uniq
+  ```
+
+### `tr`
+- **Description**: Translate characters.
+- **Explanation**: Replaces or deletes characters.
+- **Example**:
+  ```bash
+  echo "HELLO" | tr 'A-Z' 'a-z'
+  ```
+
 ## General Commands
 
 ### `man`
-- **Description**: Display the manual pages for a command.
-- **Detailed Explanation**: Provides detailed documentation for commands.
+- **Description**: Show command manuals.
+- **Explanation**: Provides detailed docs.
 - **Example**:
   ```bash
   man grep
   ```
 
 ### `which`
-- **Description**: Display the location of a command.
-- **Detailed Explanation**: Shows the full path to an executable.
+- **Description**: Locate executable.
+- **Explanation**: Shows command path.
 - **Example**:
   ```bash
   which bash
   ```
 
 ### `sudo`
-- **Description**: Run a command with administrative privileges.
-- **Detailed Explanation**: Executes commands as root or another user.
+- **Description**: Run as superuser.
+- **Explanation**: Grants elevated privileges.
 - **Example**:
   ```bash
   sudo apt update
   ```
 
+### `whatis`
+- **Description**: Brief command description.
+- **Explanation**: One-line summary from man pages.
+- **Example**:
+  ```bash
+  whatis ls
+  ```
+
+### `whereis`
+- **Description**: Find binary/source/man pages.
+- **Explanation**: Locates all related files.
+- **Example**:
+  ```bash
+  whereis bash
+  ```
+
 ## System Control Commands
 
 ### `shutdown`
-- **Description**: Shut down or reboot the system.
-- **Detailed Explanation**: Use `-h` to halt, `-r` to reboot, and a time argument.
+- **Description**: Shut down or reboot.
+- **Explanation**: `-h` (halt), `-r` (reboot), time arg.
 - **Example**:
   ```bash
   sudo shutdown -r now
   ```
 
 ### `reboot`
-- **Description**: Reboot the system.
-- **Detailed Explanation**: Immediately restarts the system.
+- **Description**: Restart system.
+- **Explanation**: Immediate reboot.
 - **Example**:
   ```bash
   sudo reboot
   ```
 
 ### `halt`
-- **Description**: Halt the system.
-- **Detailed Explanation**: Stops all processes and powers off (use with caution).
+- **Description**: Stop system.
+- **Explanation**: Halts processes; use cautiously.
 - **Example**:
   ```bash
   sudo halt
   ```
 
+### `poweroff`
+- **Description**: Power off system.
+- **Explanation**: Shuts down cleanly.
+- **Example**:
+  ```bash
+  sudo poweroff
+  ```
+
 ## Bash Shortcuts
 
-- **Ctrl + A**: Move to the beginning of the line.
-- **Ctrl + E**: Move to the end of the line.
-- **Ctrl + B**: Move back one character.
-- **Ctrl + F**: Move forward one character.
-- **Alt + B**: Move back one word.
-- **Alt + F**: Move forward one word.
-- **Ctrl + U**: Cut from cursor to beginning of line.
-- **Ctrl + K**: Cut from cursor to end of line.
-- **Ctrl + W**: Cut the word before the cursor.
-- **Ctrl + Y**: Paste the last cut text.
-- **Ctrl + L**: Clear the screen.
-- **Ctrl + R**: Search command history (type to search, Enter to execute).
-- **Ctrl + G**: Exit history search mode.
-- **Ctrl + P**: Previous command in history.
-- **Ctrl + N**: Next command in history.
-- **Ctrl + C**: Terminate the current command.
+- **Ctrl + A**: Start of line.
+- **Ctrl + E**: End of line.
+- **Ctrl + B**: Back one char.
+- **Ctrl + F**: Forward one char.
+- **Alt + B**: Back one word.
+- **Alt + F**: Forward one word.
+- **Ctrl + U**: Cut to line start.
+- **Ctrl + K**: Cut to line end.
+- **Ctrl + W**: Cut previous word.
+- **Ctrl + Y**: Paste cut text.
+- **Ctrl + L**: Clear screen.
+- **Ctrl + R**: Search history.
+- **Ctrl + G**: Exit history search.
+- **Ctrl + P**: Previous command.
+- **Ctrl + N**: Next command.
+- **Ctrl + C**: Kill command.
 
 ## Nano Shortcuts
 
-- **Ctrl + O**: Save the file (write out).
-- **Ctrl + X**: Exit Nano.
-- **Ctrl + R**: Read a file into the current buffer.
-- **Ctrl + J**: Justify the current paragraph.
-- **Ctrl + Y**: Scroll up one page.
-- **Ctrl + V**: Scroll down one page.
-- **Alt + \\**: Go to a specific line number.
-- **Alt + ,**: Go to the beginning of the current line.
-- **Alt + .**: Go to the end of the current line.
-- **Ctrl + K**: Cut from cursor to end of line.
-- **Ctrl + U**: Uncut (paste) the last cut text.
-- **Ctrl + 6**: Mark a block of text (start selection).
-- **Ctrl + W**: Search for a string.
-- **Alt + W**: Search and replace a string.
-- **Alt + R**: Repeat the last search.
+- **Ctrl + O**: Save file.
+- **Ctrl + X**: Exit.
+- **Ctrl + R**: Read file.
+- **Ctrl + J**: Justify paragraph.
+- **Ctrl + Y**: Scroll up.
+- **Ctrl + V**: Scroll down.
+- **Alt + \\**: Go to line.
+- **Alt + ,**: Line start.
+- **Alt + .**: Line end.
+- **Ctrl + K**: Cut to end.
+- **Ctrl + U**: Paste.
+- **Ctrl + 6**: Select text.
+- **Ctrl + W**: Search.
+- **Alt + W**: Replace.
+- **Alt + R**: Repeat search.
 
 ## VI Shortcuts
 
-- **cw**: Change the current word (delete and enter insert mode).
-- **dd**: Delete the current line.
-- **x**: Delete the character under the cursor.
-- **R**: Enter replace mode (overwrite text).
-- **o**: Insert a new line below and enter insert mode.
-- **u**: Undo the last change.
-- **s**: Substitute the character under the cursor (delete and insert).
-- **dw**: Delete from cursor to start of next word.
-- **D**: Delete from cursor to end of line.
-- **4dw**: Delete the next four words.
-- **A**: Append at the end of the line.
-- **S**: Delete the current line and enter insert mode.
-- **r**: Replace the character under the cursor.
-- **i**: Insert before the cursor.
-- **3dd**: Delete three lines.
-- **ESC**: Exit insert mode to command mode.
-- **U**: Undo all changes on the current line.
-- **~**: Toggle case of the character under the cursor.
-- **a**: Append after the cursor.
-- **C**: Change from cursor to end of line (delete and insert).
+- **cw**: Change word.
+- **dd**: Delete line.
+- **x**: Delete char.
+- **R**: Replace mode.
+- **o**: New line below.
+- **u**: Undo.
+- **s**: Substitute char.
+- **dw**: Delete word.
+- **D**: Delete to end.
+- **4dw**: Delete 4 words.
+- **A**: Append at end.
+- **S**: Delete and insert.
+- **r**: Replace char.
+- **i**: Insert before.
+- **3dd**: Delete 3 lines.
+- **ESC**: Command mode.
+- **U**: Undo line.
+- **~**: Toggle case.
+- **a**: Append after.
+- **C**: Change to end.
 
 ## Vim Shortcuts
 
-- **i**: Enter insert mode before the cursor.
-- **x**: Delete the character under the cursor.
-- **dd**: Delete the current line.
-- **yy**: Copy (yank) the current line.
-- **p**: Paste below the current line.
-- **u**: Undo the last change.
-- **Ctrl + R**: Redo the last undone change.
-- **:w**: Save the file.
-- **:q**: Quit Vim.
+- **i**: Insert mode.
+- **x**: Delete char.
+- **dd**: Delete line.
+- **yy**: Copy line.
+- **p**: Paste below.
+- **u**: Undo.
+- **Ctrl + R**: Redo.
+- **:w**: Save.
+- **:q**: Quit.
 - **:wq**: Save and quit.
-- **:q!**: Quit without saving.
-- **:set nu**: Display line numbers.
-- **v**: Enter visual mode (select text).
-- **y**: Copy the selected text.
-- **d**: Delete the selected text.
-- **p**: Paste the copied or deleted text.
-- **:s/old/new/g**: Replace all occurrences of "old" with "new" in the current line.
+- **:q!**: Quit no save.
+- **:set nu**: Line numbers.
+- **v**: Visual mode.
+- **y**: Copy selection.
+- **d**: Delete selection.
+- **p**: Paste selection.
+- **:s/old/new/g**: Replace in line.
 
 ## Package Management Commands
 
 ### `apt update`
 - **Description**: Update package list (Debian/Ubuntu).
-- **Detailed Explanation**: Refreshes the local package index.
+- **Explanation**: Refreshes package index.
 - **Example**:
   ```bash
   sudo apt update
   ```
 
 ### `apt upgrade`
-- **Description**: Upgrade installed packages (Debian/Ubuntu).
-- **Detailed Explanation**: Updates all installed packages to their latest versions.
+- **Description**: Upgrade packages.
+- **Explanation**: Updates all installed packages.
 - **Example**:
   ```bash
   sudo apt upgrade
   ```
 
 ### `apt install package_name`
-- **Description**: Install a package (Debian/Ubuntu).
-- **Detailed Explanation**: Installs a specified package and its dependencies.
+- **Description**: Install package.
+- **Explanation**: Adds package and dependencies.
 - **Example**:
   ```bash
   sudo apt install nginx
   ```
 
 ### `apt remove package_name`
-- **Description**: Remove a package (Debian/Ubuntu).
-- **Detailed Explanation**: Uninstalls a package, leaving configuration files.
+- **Description**: Remove package.
+- **Explanation**: Uninstalls, keeps config files.
 - **Example**:
   ```bash
   sudo apt remove nginx
   ```
 
 ### `apt search pattern`
-- **Description**: Search for packages (Debian/Ubuntu).
-- **Detailed Explanation**: Finds packages matching a keyword.
+- **Description**: Search packages.
+- **Explanation**: Finds packages by keyword.
 - **Example**:
   ```bash
   apt search python
   ```
 
 ### `apt list --installed`
-- **Description**: List installed packages (Debian/Ubuntu).
-- **Detailed Explanation**: Shows all currently installed packages.
+- **Description**: List installed packages.
+- **Explanation**: Shows current packages.
 - **Example**:
   ```bash
   apt list --installed
   ```
 
 ### `dpkg -i package.deb`
-- **Description**: Install a .deb package file (Debian/Ubuntu).
-- **Detailed Explanation**: Installs a local `.deb` file manually.
+- **Description**: Install `.deb` file.
+- **Explanation**: Manual install of local package.
 - **Example**:
   ```bash
   sudo dpkg -i package.deb
   ```
 
 ### `yum update`
-- **Description**: Update packages on RPM-based systems (e.g., CentOS).
-- **Detailed Explanation**: Updates all packages (older RPM systems).
+- **Description**: Update packages (RPM).
+- **Explanation**: Updates all (e.g., CentOS).
 - **Example**:
   ```bash
   sudo yum update
   ```
 
 ### `yum install package_name`
-- **Description**: Install package on RPM systems.
-- **Detailed Explanation**: Installs a package and dependencies.
+- **Description**: Install package (RPM).
+- **Explanation**: Adds package and dependencies.
 - **Example**:
   ```bash
   sudo yum install httpd
   ```
 
 ### `dnf search term`
-- **Description**: Search for packages using DNF (Fedora).
-- **Detailed Explanation**: Searches package repositories (modern RPM replacement).
+- **Description**: Search packages (Fedora).
+- **Explanation**: Modern RPM search.
 - **Example**:
   ```bash
   dnf search vim
   ```
 
 ### `pacman -S package_name`
-- **Description**: Install package on Arch Linux.
-- **Detailed Explanation**: Installs a package and its dependencies.
+- **Description**: Install package (Arch).
+- **Explanation**: Adds package and dependencies.
 - **Example**:
   ```bash
   sudo pacman -S vim
   ```
 
 ### `pacman -Syu`
-- **Description**: Update Arch Linux system.
-- **Detailed Explanation**: Synchronizes and updates all packages.
+- **Description**: Update system (Arch).
+- **Explanation**: Syncs and updates all.
 - **Example**:
   ```bash
   sudo pacman -Syu
   ```
 
+### `zypper install package_name`
+- **Description**: Install package (openSUSE).
+- **Explanation**: Adds package and dependencies.
+- **Example**:
+  ```bash
+  sudo zypper install vim
+  ```
+
 ## Disk Space Usage & Monitoring
 
 ### `df -h`
-- **Description**: Show disk space usage in human-readable format.
-- **Detailed Explanation**: Displays used and available space on mounted filesystems.
+- **Description**: Show disk usage.
+- **Explanation**: Displays space in human-readable format.
 - **Example**:
   ```bash
   df -h
   ```
 
-### `du -sh /var/log`
-- **Description**: Show size of a specific directory.
-- **Detailed Explanation**: Summarizes total size (`-s`) in human-readable format (`-h`).
+### `du -sh /path`
+- **Description**: Show directory size.
+- **Explanation**: Summarizes size (`-s`), readable (`-h`).
 - **Example**:
   ```bash
   du -sh /var/log
   ```
 
 ### `du -h --max-depth=1`
-- **Description**: Show sizes of subdirectories (1 level deep).
-- **Detailed Explanation**: Lists sizes of directories at one level.
+- **Description**: List subdir sizes.
+- **Explanation**: Shows sizes one level deep.
 - **Example**:
   ```bash
   du -h --max-depth=1 /home
   ```
 
 ### `lsblk`
-- **Description**: Display information about block devices (partitions & disks).
-- **Detailed Explanation**: Shows device hierarchy and mount points.
+- **Description**: List block devices.
+- **Explanation**: Shows partitions and mounts.
 - **Example**:
   ```bash
   lsblk
   ```
 
 ### `blkid`
-- **Description**: Show UUID and filesystem type of partitions.
-- **Detailed Explanation**: Identifies partition details for mounting.
+- **Description**: Show partition UUIDs.
+- **Explanation**: Identifies filesystem details.
 - **Example**:
   ```bash
   sudo blkid
   ```
 
 ### `findmnt`
-- **Description**: Display mounted filesystems.
-- **Detailed Explanation**: Lists mounted filesystems and their properties.
+- **Description**: List mounted filesystems.
+- **Explanation**: Shows mount points and properties.
 - **Example**:
   ```bash
   findmnt
   ```
 
 ### `mount | column -t`
-- **Description**: List mounted files in a readable table format.
-- **Detailed Explanation**: Pipes `mount` output to `column` for alignment.
+- **Description**: List mounts in table.
+- **Explanation**: Formats `mount` output cleanly.
 - **Example**:
   ```bash
   mount | column -t
@@ -1054,58 +1279,56 @@
 ## Partition & Filesystem Management
 
 ### `fdisk -l`
-- **Description**: Show partition table of all disks.
-- **Detailed Explanation**: Lists partitions (requires root).
+- **Description**: List partitions.
+- **Explanation**: Shows all disk partitions (root).
 - **Example**:
   ```bash
   sudo fdisk -l
   ```
 
 ### `parted -l`
-- **Description**: Display partition details using GNU Parted.
-- **Detailed Explanation**: Shows partition info and disk layout.
+- **Description**: Show partition details.
+- **Explanation**: Displays layout via GNU Parted.
 - **Example**:
   ```bash
   sudo parted -l
   ```
 
 ### `mkfs.ext4 /dev/sdb1`
-- **Description**: Format a partition with ext4 filesystem.
-- **Detailed Explanation**: Creates an ext4 filesystem, erasing all data.
-- **Warning**: Destroys existing data on the partition.
+- **Description**: Format as ext4.
+- **Explanation**: Creates ext4; erases data.
 - **Example**:
   ```bash
   sudo mkfs.ext4 /dev/sdb1
   ```
 
 ### `mkfs.xfs /dev/sdb1`
-- **Description**: Format a partition with XFS filesystem.
-- **Detailed Explanation**: Creates an XFS filesystem, erasing all data.
-- **Warning**: Destroys existing data.
+- **Description**: Format as XFS.
+- **Explanation**: Creates XFS; erases data.
 - **Example**:
   ```bash
   sudo mkfs.xfs /dev/sdb1
   ```
 
 ### `e2fsck -f /dev/sdb1`
-- **Description**: Check and repair an ext4 filesystem.
-- **Detailed Explanation**: Forces a filesystem check (`-f`).
+- **Description**: Check/repair ext4.
+- **Explanation**: Forces check (`-f`) for errors.
 - **Example**:
   ```bash
   sudo e2fsck -f /dev/sdb1
   ```
 
 ### `xfs_repair /dev/sdb1`
-- **Description**: Repair an XFS filesystem.
-- **Detailed Explanation**: Fixes inconsistencies in XFS filesystems.
+- **Description**: Repair XFS.
+- **Explanation**: Fixes XFS issues.
 - **Example**:
   ```bash
   sudo xfs_repair /dev/sdb1
   ```
 
 ### `tune2fs -m 5 /dev/sdb1`
-- **Description**: Set reserved space on ext4 filesystem (5% in this case).
-- **Detailed Explanation**: Reserves space for root use.
+- **Description**: Set ext4 reserved space.
+- **Explanation**: Reserves 5% for root.
 - **Example**:
   ```bash
   sudo tune2fs -m 5 /dev/sdb1
@@ -1114,40 +1337,40 @@
 ## Mounting & Unmounting Filesystems
 
 ### `mount /dev/sdb1 /mnt`
-- **Description**: Mount a partition to `/mnt`.
-- **Detailed Explanation**: Attaches a filesystem to a directory.
+- **Description**: Mount partition.
+- **Explanation**: Attaches filesystem to dir.
 - **Example**:
   ```bash
   sudo mount /dev/sdb1 /mnt
   ```
 
 ### `umount /mnt`
-- **Description**: Unmount a filesystem from `/mnt`.
-- **Detailed Explanation**: Detaches a mounted filesystem.
+- **Description**: Unmount filesystem.
+- **Explanation**: Detaches from mount point.
 - **Example**:
   ```bash
   sudo umount /mnt
   ```
 
 ### `mount -o remount,rw /`
-- **Description**: Remount root filesystem as read-write.
-- **Detailed Explanation**: Changes mount options without unmounting.
+- **Description**: Remount with options.
+- **Explanation**: Changes options (e.g., read-write).
 - **Example**:
   ```bash
   sudo mount -o remount,rw /
   ```
 
-### `mount -t nfs 192.168.1.100:/share /mnt`
-- **Description**: Mount an NFS share.
-- **Detailed Explanation**: Connects to a remote NFS server.
+### `mount -t nfs server:/share /mnt`
+- **Description**: Mount NFS share.
+- **Explanation**: Connects to remote NFS.
 - **Example**:
   ```bash
   sudo mount -t nfs 192.168.1.100:/share /mnt
   ```
 
 ### `mount -o loop file.iso /mnt`
-- **Description**: Mount an ISO file as a virtual disk.
-- **Detailed Explanation**: Treats an ISO as a block device.
+- **Description**: Mount ISO file.
+- **Explanation**: Treats ISO as device.
 - **Example**:
   ```bash
   sudo mount -o loop disk.iso /mnt
@@ -1156,40 +1379,40 @@
 ## Disk Performance & Health Monitoring
 
 ### `iotop`
-- **Description**: Show real-time disk I/O usage by processes.
-- **Detailed Explanation**: Displays disk read/write activity per process.
+- **Description**: Monitor disk I/O.
+- **Explanation**: Shows real-time I/O per process.
 - **Example**:
   ```bash
   sudo iotop
   ```
 
 ### `iostat -x 1`
-- **Description**: Show detailed disk usage statistics.
-- **Detailed Explanation**: Reports I/O stats every second (`1`).
+- **Description**: Show disk stats.
+- **Explanation**: Reports I/O every second.
 - **Example**:
   ```bash
   iostat -x 1
   ```
 
 ### `smartctl -H /dev/sda`
-- **Description**: Check SMART health status of a disk.
-- **Detailed Explanation**: Verifies disk health via SMART data.
+- **Description**: Check disk health.
+- **Explanation**: Verifies SMART status.
 - **Example**:
   ```bash
   sudo smartctl -H /dev/sda
   ```
 
 ### `smartctl -a /dev/sda`
-- **Description**: Display full SMART diagnostics.
-- **Detailed Explanation**: Shows all SMART attributes.
+- **Description**: Show SMART data.
+- **Explanation**: Full SMART attributes.
 - **Example**:
   ```bash
   sudo smartctl -a /dev/sda
   ```
 
 ### `badblocks -sv /dev/sdb`
-- **Description**: Scan for bad sectors on a disk.
-- **Detailed Explanation**: Verbose (`-v`) scan with output (`-s`).
+- **Description**: Scan for bad sectors.
+- **Explanation**: Verbose scan with output.
 - **Example**:
   ```bash
   sudo badblocks -sv /dev/sdb
@@ -1198,32 +1421,32 @@
 ## Managing Disk Quotas
 
 ### `quota -u username`
-- **Description**: Show disk quota for a user.
-- **Detailed Explanation**: Displays usage and limits for a user.
+- **Description**: Show user quota.
+- **Explanation**: Displays usage/limits.
 - **Example**:
   ```bash
   quota -u user1
   ```
 
 ### `edquota -u username`
-- **Description**: Edit disk quota for a user.
-- **Detailed Explanation**: Opens an editor to set quotas.
+- **Description**: Edit user quota.
+- **Explanation**: Opens editor for quota settings.
 - **Example**:
   ```bash
   sudo edquota -u user1
   ```
 
 ### `repquota -a`
-- **Description**: Show quota report for all users.
-- **Detailed Explanation**: Summarizes quota usage system-wide.
+- **Description**: Report all quotas.
+- **Explanation**: Summarizes system-wide usage.
 - **Example**:
   ```bash
   sudo repquota -a
   ```
 
 ### `setquota -u username 500M 1G 0 0 /dev/sda1`
-- **Description**: Set quota (500MB soft, 1GB hard).
-- **Detailed Explanation**: Defines soft (warning) and hard (limit) quotas.
+- **Description**: Set user quota.
+- **Explanation**: Soft (500MB), hard (1GB) limits.
 - **Example**:
   ```bash
   sudo setquota -u user1 500M 1G 0 0 /dev/sda1
@@ -1232,40 +1455,40 @@
 ## LVM (Logical Volume Management)
 
 ### `pvcreate /dev/sdb`
-- **Description**: Initialize a physical volume for LVM.
-- **Detailed Explanation**: Prepares a disk for LVM use.
+- **Description**: Initialize physical volume.
+- **Explanation**: Prepares disk for LVM.
 - **Example**:
   ```bash
   sudo pvcreate /dev/sdb
   ```
 
-### `vgcreate vg /dev/sdb`
-- **Description**: Create a volume group from a physical volume.
-- **Detailed Explanation**: Groups physical volumes into a volume group.
+### `vgcreate vg_name /dev/sdb`
+- **Description**: Create volume group.
+- **Explanation**: Groups physical volumes.
 - **Example**:
   ```bash
   sudo vgcreate my_vg /dev/sdb
   ```
 
-### `lvcreate -L 10G -n my_lv my_vg`
-- **Description**: Create a 10GB logical volume.
-- **Detailed Explanation**: Allocates space from a volume group.
+### `lvcreate -L 10G -n lv_name vg_name`
+- **Description**: Create logical volume.
+- **Explanation**: Allocates 10GB from group.
 - **Example**:
   ```bash
   sudo lvcreate -L 10G -n my_lv my_vg
   ```
 
-### `lvextend -L +5G /dev/my_vg/my_lv`
-- **Description**: Extend a logical volume by 5GB.
-- **Detailed Explanation**: Increases the size of an existing LV.
+### `lvextend -L +5G /dev/vg_name/lv_name`
+- **Description**: Extend logical volume.
+- **Explanation**: Adds 5GB to LV.
 - **Example**:
   ```bash
   sudo lvextend -L +5G /dev/my_vg/my_lv
   ```
 
-### `resize2fs /dev/my_vg/my_lv`
-- **Description**: Resize ext4 filesystem after extending LVM.
-- **Detailed Explanation**: Adjusts the filesystem to the new LV size.
+### `resize2fs /dev/vg_name/lv_name`
+- **Description**: Resize ext4 on LV.
+- **Explanation**: Adjusts filesystem size.
 - **Example**:
   ```bash
   sudo resize2fs /dev/my_vg/my_lv
@@ -1274,24 +1497,24 @@
 ## Swap Space Management
 
 ### `swapon -s`
-- **Description**: Show active swap partitions and files.
-- **Detailed Explanation**: Lists current swap areas and usage.
+- **Description**: Show swap areas.
+- **Explanation**: Lists active swap and usage.
 - **Example**:
   ```bash
   swapon -s
   ```
 
 ### `free -m`
-- **Description**: Display system memory usage including swap.
-- **Detailed Explanation**: Shows memory and swap in megabytes.
+- **Description**: Show memory/swap.
+- **Explanation**: Displays in megabytes.
 - **Example**:
   ```bash
   free -m
   ```
 
 ### `mkswap /dev/sdb2`
-- **Description**: Format a partition as swap.
-- **Detailed Explanation**: Prepares a partition for swap use.
+- **Description**: Format swap partition.
+- **Explanation**: Prepares partition for swap.
 - **Example**:
   ```bash
   sudo mkswap /dev/sdb2
@@ -1299,7 +1522,7 @@
 
 ### `swapon /dev/sdb2`
 - **Description**: Enable swap partition.
-- **Detailed Explanation**: Activates a swap area.
+- **Explanation**: Activates swap area.
 - **Example**:
   ```bash
   sudo swapon /dev/sdb2
@@ -1307,15 +1530,15 @@
 
 ### `swapoff /dev/sdb2`
 - **Description**: Disable swap partition.
-- **Detailed Explanation**: Deactivates a swap area.
+- **Explanation**: Deactivates swap area.
 - **Example**:
   ```bash
   sudo swapoff /dev/sdb2
   ```
 
 ### `fallocate -l 2G /swapfile`
-- **Description**: Create a 2GB swap file.
-- **Detailed Explanation**: Allocates space for a file-based swap.
+- **Description**: Create swap file.
+- **Explanation**: Allocates 2GB for swap.
 - **Example**:
   ```bash
   sudo fallocate -l 2G /swapfile
@@ -1323,7 +1546,7 @@
 
 ### `mkswap /swapfile`
 - **Description**: Format swap file.
-- **Detailed Explanation**: Sets up a file as swap space.
+- **Explanation**: Sets up file as swap.
 - **Example**:
   ```bash
   sudo mkswap /swapfile
@@ -1331,7 +1554,7 @@
 
 ### `swapon /swapfile`
 - **Description**: Enable swap file.
-- **Detailed Explanation**: Activates the swap file.
+- **Explanation**: Activates file-based swap.
 - **Example**:
   ```bash
   sudo swapon /swapfile
@@ -1340,24 +1563,24 @@
 ## Secure Disk Erasing
 
 ### `shred -n 3 -z /dev/sdb`
-- **Description**: Securely erase a disk by overwriting it 3 times.
-- **Detailed Explanation**: Overwrites data (`-n 3`) and zeros it (`-z`).
+- **Description**: Securely erase disk.
+- **Explanation**: Overwrites 3 times, then zeros.
 - **Example**:
   ```bash
   sudo shred -n 3 -z /dev/sdb
   ```
 
 ### `dd if=/dev/zero of=/dev/sdb bs=1M status=progress`
-- **Description**: Wipe a disk by filling it with zeroes.
-- **Detailed Explanation**: Writes zeros to the entire disk with progress.
+- **Description**: Wipe with zeros.
+- **Explanation**: Fills disk with zeros, shows progress.
 - **Example**:
   ```bash
   sudo dd if=/dev/zero of=/dev/sdb bs=1M status=progress
   ```
 
 ### `wipe -rf /dev/sdb`
-- **Description**: Securely wipe a disk (requires `wipe` utility).
-- **Detailed Explanation**: Recursively (`-r`) and forcefully (`-f`) erases data.
+- **Description**: Secure wipe (needs `wipe`).
+- **Explanation**: Erases recursively and forcefully.
 - **Example**:
   ```bash
   sudo wipe -rf /dev/sdb
